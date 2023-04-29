@@ -13,6 +13,13 @@ The West Wing
 https://www.kaggle.com/code/mahmoud87hassan/predict-future-crude-oil-prices-using-lstm-network
 https://rahmadya.com/2021/03/04/belajar-recurrent-neural-network/
 https://www.geeksforgeeks.org/introduction-to-convolutions-using-python/
+
+Artificial Neural Network
+
+Convolution Neural Network is a modification of
+Recurrent Neural Network
+
+https://www.nickmccullum.com/python-deep-learning/recurrent-neural-network-tutorial/
 '''
 
 import numpy as np #linear algebra
@@ -56,7 +63,12 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 #Convert date coulmns to specific format
 dateparse = lambda x: pd.datetime.strptime(x, '%b %d, %Y')
 #Read csv file
-df = pd.read_csv(r'/kaggle/input/brent-oil-prices/BrentOilPrices.csv',parse_dates=['Date'], date_parser=dateparse)
+'''
+df = pd.read_csv(r'/home/haga/Downloads/BrentOilPrices.csv', \
+    sep = '-', parse_dates=['Date'], date_parser = dateparse)
+'''
+df = pd.read_csv(r'/home/haga/Downloads/BrentOilPrices.csv', \
+    parse_dates=['Date'])
 #Sort dataset by column Date
 df = df.sort_values('Date')
 df = df.groupby('Date')['Price'].sum().reset_index()
@@ -79,20 +91,58 @@ DfInfo(df)
 
 df.index
 
-DatetimeIndex(['2000-01-04', '2000-01-05', '2000-01-06', '2000-01-07',
-               '2000-01-10', '2000-01-11', '2000-01-12', '2000-01-13',
-               '2000-01-14', '2000-01-17',
-               '2019-09-17', '2019-09-18', '2019-09-19', '2019-09-20',
-               '2019-09-23', '2019-09-24', '2019-09-25', '2019-09-26',
-               '2019-09-27', '2019-09-30'],
-              dtype='datetime64[ns]', name='Date', length=5016, freq=None)
-
 y = df['Price'].resample('MS').mean()
 
 y.plot(figsize=(15, 6))
 plt.show()
 
+'''
+matplotlib.rcParams contains some properties in
+matplotlibrc file.
+We can use it to control the defaults of almost every property
+in Matplotlib: figure size and DPI, line width,
+color and style, axes, axis and grid properties,
+text and font properties and so on.
+
+In order to use matplotlib.rcParams,
+we should know what properties are stored in it.
+These properties can be foud in matplotlibrc file.
+import matplotlib
+f = matplotlib.matplotlib_fname()
+print(f)
+C:\Users\fly165\.conda\envs\py3.6\lib\site-packages\matplotlib\mpl-data\matplotlibrc
+'''
 rcParams['figure.figsize'] = 18, 8
+
+'''
+sm = statsmodels
+tsa = time series analysis -> autoregression models
+
+Decomposition can be defined as the process of
+solving a complex problem
+and breaking it into more sub-problems
+that can be solved easily.
+Solving a complex problem may get difficult sometimes
+but finding the solution for every sub-problem
+will be simple after which the sub-problems
+can be put together for finding the full solution
+to the original problem.
+It is a divide-and-conquer technique -> merge sort algorithm.
+
+In statistics, an additive model (AM)
+is a nonparametric regression method.
+
+Nonparametric regression is a category of regression analysis
+in which the predictor does not take a predetermined form
+but is constructed according to information derived
+from the data.
+That is, no parametric form is assumed
+for the relationship between predictors and dependent variable.
+Nonparametric regression requires larger sample sizes
+than regression based on parametric models
+because the data must supply the model structure
+as well as the model estimates.
+'''
 decomposition = sm.tsa.seasonal_decompose(y, model='additive')
 fig = decomposition.plot()
 plt.show()
