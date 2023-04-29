@@ -1,5 +1,5 @@
 import numpy as matrix
-import numpy, matplotlib
+import numpy, matplotlib.pyplot as plt
 
 '''
 create matrix [1 0] x 10
@@ -11,3 +11,5 @@ array1 =  numpy.array([
 ] * 10)
 
 print(array1)
+plt.imshow(array1,origin="upper")
+plt.show()
