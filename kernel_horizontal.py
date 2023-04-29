@@ -20,14 +20,16 @@ from matplotlib.image import imread
 import matplotlib.pyplot as plt
 
 
-os.system('t')
+os.system('tput reset')
 
 animal = imread('/home/haga/Desktop/animal.jpeg')
 #animal picture size in 180 wide, 308 long
 #3rd color dimension.
-#black and white coolor (180, 308)
+#black and white color (180, 308)
 print(animal.shape)
 
 #print(animal[0, 0, :3])
 
-
+#create matrix 3 x 3 values by 1
+kernel_blur = np.ones((3, 3)) * (1/9)
+print(kernel_blur)
