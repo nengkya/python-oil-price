@@ -9,6 +9,8 @@ between the kernel and an image.
 Or more simply, when each pixel in the output image
 is a function of the nearby pixels (including itself)
 in the input image, the kernel is that function.
+
+https://jk31.github.io/2020/02/15/kernel-image.html
 '''
 
 import os
