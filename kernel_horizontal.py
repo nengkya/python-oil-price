@@ -33,3 +33,10 @@ print(animal.shape)
 #create matrix 3 x 3 values by 1
 kernel_blur = np.ones((3, 3)) * (1/9)
 print(kernel_blur)
+
+
+def conv(image, kernel, stride):
+	if kernel_fits(image, kernel, stride)[2]:
+		pass
+
+plt.imshow(conv(animal, kernel_sharp, 1))
