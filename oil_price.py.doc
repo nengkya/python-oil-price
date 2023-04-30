@@ -96,18 +96,74 @@ y = df['Price'].resample('MS').mean()
 y.plot(figsize=(15, 6))
 plt.show()
 
+'''
+matplotlib.rcParams contains some properties in
+matplotlibrc file.
+We can use it to control the defaults of almost every property
+in Matplotlib: figure size and DPI, line width,
+color and style, axes, axis and grid properties,
+text and font properties and so on.
+
+In order to use matplotlib.rcParams,
+we should know what properties are stored in it.
+These properties can be foud in matplotlibrc file.
+import matplotlib
+f = matplotlib.matplotlib_fname()
+print(f)
+C:\Users\fly165\.conda\envs\py3.6\lib\site-packages\matplotlib\mpl-data\matplotlibrc
+rcParams['figure.figsize'] = 18, 8
+
+sm = statsmodels
+tsa = time series analysis -> autoregression models
+
+Decomposition can be defined as the process of
+solving a complex problem
+and breaking it into more sub-problems
+that can be solved easily.
+Solving a complex problem may get difficult sometimes
+but finding the solution for every sub-problem
+will be simple after which the sub-problems
+can be put together for finding the full solution
+to the original problem.
+It is a divide-and-conquer technique -> merge sort algorithm.
+
+In statistics, an additive model (AM)
+is a nonparametric regression method.
+
+Nonparametric regression is a category of regression analysis
+in which the predictor does not take a predetermined form
+but is constructed according to information derived
+from the data.
+That is, no parametric form is assumed
+for the relationship between predictors and dependent variable.
+Nonparametric regression requires larger sample sizes
+than regression based on parametric models
+because the data must supply the model structure
+as well as the model estimates.
 decomposition = sm.tsa.seasonal_decompose(y, model='additive')
 fig = decomposition.plot()
 plt.show()
 
-#Transform features by scaling each feature to a given range.
+Transform features by scaling each feature to a given range.
 
-#This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.
+This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.
 # normalize the data_set 
 sc = MinMaxScaler(feature_range = (0, 1))
 
-#The training data is scaled, and its scaling parameters are determined by applying a fit_transform() to the training data. The model we created, in this case, will discover the mean and variance of the characteristics in the training set.
+The training data is scaled, and its scaling parameters are determined by applying a fit_transform() to the training data. The model we created, in this case, will discover the mean and variance of the characteristics in the training set.
 df = sc.fit_transform(df)
+
+'''
+In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships between a dependent variable (often called the 'outcome' or 'response' variable, or a 'label' in machine learning parlance) and one or more independent variables (often called 'predictors', 'covariates', 'explanatory variables' or 'features'). The most common form of regression analysis is linear regression, in which one finds the line (or a more complex linear combination) that most closely fits the data according to a specific mathematical criterion. For example, the method of ordinary least squares computes the unique line (or hyperplane) that minimizes the sum of squared differences between the true data and that line (or hyperplane). For specific mathematical reasons (see linear regression), this allows the researcher to estimate the conditional expectation (or population average value) of the dependent variable when the independent variables take on a given set of values. Less common forms of regression use slightly different procedures to estimate alternative location parameters (e.g., quantile regression or Necessary Condition Analysis[1]) or estimate the conditional expectation across a broader collection of non-linear models (e.g., nonparametric regression).
+
+Regression analysis is primarily used for two conceptually distinct purposes.
+
+First, regression analysis is widely used for prediction and forecasting, where its use has substantial overlap with the field of machine learning.
+
+Second, in some situations regression analysis can be used to infer causal relationships between the independent and dependent variables. Importantly, regressions by themselves only reveal relationships between a dependent variable and a collection of independent variables in a fixed dataset. To use regressions for prediction or to infer causal relationships, respectively, a researcher must carefully justify why existing relationships have predictive power for a new context or why a relationship between two variables has a causal interpretation. The latter is especially important when researchers hope to estimate causal relationships using observational data.[2][3]
+
+
+'''
 
 # split into train and test sets
 train_size = int(len(df) * 0.70)
