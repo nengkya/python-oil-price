@@ -154,6 +154,9 @@ This estimator scales and translates each feature individually such that it is i
 '''
 # normalize the data_set 
 sc = MinMaxScaler(feature_range = (0, 1))
+
+'''
+The training data is scaled, and its scaling parameters are determined by applying a fit_transform() to the training data. The model we created, in this case, will discover the mean and variance of the characteristics in the training set.'''
 df = sc.fit_transform(df)
 
 # split into train and test sets
