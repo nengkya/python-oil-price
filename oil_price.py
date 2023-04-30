@@ -147,6 +147,11 @@ decomposition = sm.tsa.seasonal_decompose(y, model='additive')
 fig = decomposition.plot()
 plt.show()
 
+'''
+Transform features by scaling each feature to a given range.
+
+This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.
+'''
 # normalize the data_set 
 sc = MinMaxScaler(feature_range = (0, 1))
 df = sc.fit_transform(df)
