@@ -64,7 +64,7 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 dateparse = lambda x: pd.datetime.strptime(x, '%b %d, %Y')
 #Read csv file
 '''
-df = pd.read_csv(r'/home/haga/Downloads/BrentOilPrices.csv', \
+df = pd.read_csv(r'BrentOilPrices.csv', \
     sep = '-', parse_dates=['Date'], date_parser = dateparse)
 '''
 df = pd.read_csv(r'/home/haga/Downloads/BrentOilPrices.csv', \
